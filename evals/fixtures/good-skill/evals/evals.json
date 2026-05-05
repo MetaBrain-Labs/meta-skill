@@ -1,0 +1,11 @@
+{
+  "skill_name": "good-skill",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Summarize notes.txt",
+      "expected_output": "Concise summary and assumptions.",
+      "files": []
+    }
+  ]
+}

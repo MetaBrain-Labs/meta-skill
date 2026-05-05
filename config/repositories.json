@@ -1,0 +1,133 @@
+{
+  "schema_version": "1.0",
+  "updated": "2026-04-30",
+  "default_limit_per_source": 50,
+  "sources": [
+    {
+      "id": "anthropics-skills",
+      "name": "Anthropic Skills",
+      "kind": "github-repo",
+      "priority": 10,
+      "homepage": "https://github.com/anthropics/skills",
+      "owner": "anthropics",
+      "repo": "skills",
+      "ref": "main",
+      "skill_roots": ["skills"],
+      "call_methods": {
+        "git_clone": "git clone --depth 1 https://github.com/anthropics/skills.git",
+        "github_tree_api": "GET https://api.github.com/repos/anthropics/skills/git/trees/main?recursive=1",
+        "raw_skill": "GET https://raw.githubusercontent.com/anthropics/skills/main/{path}/SKILL.md",
+        "gh_skill": "gh skill install anthropics/skills <skill-name>"
+      },
+      "notes": "Official Anthropic public skill repository. Prefer when the requested task matches document, spreadsheet, presentation, PDF, or skill-authoring workflows."
+    },
+    {
+      "id": "openai-skills",
+      "name": "OpenAI Skills Catalog for Codex",
+      "kind": "github-repo",
+      "priority": 9,
+      "homepage": "https://github.com/openai/skills",
+      "owner": "openai",
+      "repo": "skills",
+      "ref": "main",
+      "skill_roots": ["skills/.system", "skills/.curated", "skills/.experimental"],
+      "call_methods": {
+        "git_clone": "git clone --depth 1 https://github.com/openai/skills.git",
+        "github_tree_api": "GET https://api.github.com/repos/openai/skills/git/trees/main?recursive=1",
+        "raw_skill": "GET https://raw.githubusercontent.com/openai/skills/main/{path}/SKILL.md",
+        "codex_installer_curated": "$skill-installer <skill-name>",
+        "codex_installer_url": "$skill-installer install https://github.com/openai/skills/tree/main/{path}"
+      },
+      "notes": "OpenAI catalog for Codex. Check each skill license inside its directory."
+    },
+    {
+      "id": "github-awesome-copilot",
+      "name": "GitHub Awesome Copilot",
+      "kind": "github-repo",
+      "priority": 8,
+      "homepage": "https://github.com/github/awesome-copilot",
+      "owner": "github",
+      "repo": "awesome-copilot",
+      "ref": "main",
+      "skill_roots": ["skills"],
+      "call_methods": {
+        "git_clone": "git clone --depth 1 https://github.com/github/awesome-copilot.git",
+        "github_tree_api": "GET https://api.github.com/repos/github/awesome-copilot/git/trees/main?recursive=1",
+        "raw_skill": "GET https://raw.githubusercontent.com/github/awesome-copilot/main/{path}/SKILL.md",
+        "gh_skill_browse": "gh skill install github/awesome-copilot",
+        "gh_skill_direct": "gh skill install github/awesome-copilot <skill-name>",
+        "gh_skill_pinned": "gh skill install github/awesome-copilot <skill-name>@<tag-or-sha>"
+      },
+      "notes": "Good source for GitHub Copilot-oriented skills. Use gh skill where available."
+    },
+    {
+      "id": "agentskills-reference",
+      "name": "Agent Skills specification and examples",
+      "kind": "github-repo",
+      "purpose": "specification",
+      "priority": 3,
+      "homepage": "https://github.com/agentskills/agentskills",
+      "owner": "agentskills",
+      "repo": "agentskills",
+      "ref": "main",
+      "skill_roots": ["examples"],
+      "call_methods": {
+        "git_clone": "git clone --depth 1 https://github.com/agentskills/agentskills.git",
+        "github_tree_api": "GET https://api.github.com/repos/agentskills/agentskills/git/trees/main?recursive=1",
+        "raw_skill": "GET https://raw.githubusercontent.com/agentskills/agentskills/main/{path}/SKILL.md"
+      },
+      "notes": "PURPOSE=specification. This is the open Agent Skills specification repository (Apache-2.0), not a directory of installable skills. Search this source only when the user explicitly needs spec-compatible patterns, reference grammar, or example skills. For finding skills to install, prefer anthropics-skills, openai-skills, github-awesome-copilot, and the curated awesome-* indices."
+    },
+    {
+      "id": "voltagent-awesome-agent-skills",
+      "name": "VoltAgent Awesome Agent Skills",
+      "kind": "awesome-index",
+      "priority": 6,
+      "homepage": "https://github.com/VoltAgent/awesome-agent-skills",
+      "owner": "VoltAgent",
+      "repo": "awesome-agent-skills",
+      "ref": "main",
+      "index_paths": ["README.md"],
+      "call_methods": {
+        "git_clone": "git clone --depth 1 https://github.com/VoltAgent/awesome-agent-skills.git",
+        "github_tree_api": "GET https://api.github.com/repos/VoltAgent/awesome-agent-skills/git/trees/main?recursive=1",
+        "raw_index": "GET https://raw.githubusercontent.com/VoltAgent/awesome-agent-skills/main/README.md"
+      },
+      "notes": "Curated index of official and community skills. Follow links to original source, then validate before use."
+    },
+    {
+      "id": "heilcheng-awesome-agent-skills",
+      "name": "heilcheng Awesome Agent Skills",
+      "kind": "awesome-index",
+      "priority": 5,
+      "homepage": "https://github.com/heilcheng/awesome-agent-skills",
+      "owner": "heilcheng",
+      "repo": "awesome-agent-skills",
+      "ref": "main",
+      "index_paths": ["README.md", "README.ja.md"],
+      "call_methods": {
+        "git_clone": "git clone --depth 1 https://github.com/heilcheng/awesome-agent-skills.git",
+        "github_tree_api": "GET https://api.github.com/repos/heilcheng/awesome-agent-skills/git/trees/main?recursive=1",
+        "raw_index": "GET https://raw.githubusercontent.com/heilcheng/awesome-agent-skills/main/README.md"
+      },
+      "notes": "Community curated index. Treat links as untrusted until fetched and validated."
+    },
+    {
+      "id": "skillcreatorai-awesome-agent-skills",
+      "name": "SkillCreatorAI Awesome Agent Skills",
+      "kind": "awesome-index",
+      "priority": 4,
+      "homepage": "https://github.com/skillcreatorai/Awesome-Agent-Skills",
+      "owner": "skillcreatorai",
+      "repo": "Awesome-Agent-Skills",
+      "ref": "main",
+      "index_paths": ["README.md"],
+      "call_methods": {
+        "git_clone": "git clone --depth 1 https://github.com/skillcreatorai/Awesome-Agent-Skills.git",
+        "github_tree_api": "GET https://api.github.com/repos/skillcreatorai/Awesome-Agent-Skills/git/trees/main?recursive=1",
+        "raw_index": "GET https://raw.githubusercontent.com/skillcreatorai/Awesome-Agent-Skills/main/README.md"
+      },
+      "notes": "Community index; useful for broad discovery, not a trust signal by itself."
+    }
+  ]
+}

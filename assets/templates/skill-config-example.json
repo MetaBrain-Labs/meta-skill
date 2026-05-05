@@ -1,0 +1,39 @@
+{
+  "goal": "检查 Markdown 文档风格并自动修复常见问题",
+  "compatibility": "Requires Python 3.10+ and filesystem read/write access",
+  "metadata": {
+    "version": "0.1.0",
+    "source_standard": "Agent Skills open format"
+  },
+  "workflow": [
+    "阅读用户指定的 Markdown 文件，识别文档类型（技术博客、README、API 文档等）。",
+    "按照 references/style-rules.md 中的规则逐条检查违规项。",
+    "若用户要求自动修复，仅修复无歧义的违规项。",
+    "生成报告并汇报结果。"
+  ],
+  "defaults": [
+    "默认使用 CommonMark 风格规则。",
+    "链接文本、语义强调等需人工判断的项仅做标记，不做自动修改。"
+  ],
+  "validation": [
+    "违规项定位准确（行号正确、类型分类正确）。",
+    "自动修复未引入新错误。",
+    "未修改用户未指定的文件。"
+  ],
+  "references": [
+    {"file": "references/style-rules.md", "description": "performing style checks"},
+    {"file": "references/gfm-extensions.md", "description": "user requests GFM rules"}
+  ],
+  "evals": [
+    {
+      "prompt": "我写了一篇技术博客在 workspace/blog-post.md，帮我检查一下 markdown 风格有没有问题，不用修复，给我看报告就行。",
+      "expected_output": "Agent 逐条检查，输出包含文件名、行号、违规类型的报告。",
+      "files": ["workspace/blog-post.md"]
+    },
+    {
+      "prompt": "我们项目 docs/ 下所有 md 文件统一用 GFM 风格，帮我自动修复能修的部分。",
+      "expected_output": "Agent 扫描全文，使用 GFM 规则检查，自动修复无歧义项，标记需人工判定的项。",
+      "files": []
+    }
+  ]
+}
