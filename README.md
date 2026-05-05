@@ -4,9 +4,9 @@
 
 ## 项目简介
 
-`meta-skill` 是一个 Agent Skill，帮助用户获得一份**安全、可发布**的 Agent Skill。它覆盖一条 skill 从搜索、获取、创建、校验到打包的完整生命周期，本身也以 Skill 形态交付，可安装到任意支持 Agent Skills 规范的 Agent 中。
+`meta-skill` 是一个 Agent Skill，帮助用户获得一份**安全、可发布**的 Agent Skill，覆盖 skill 从搜索、获取、创建、校验到打包的完整生命周期，可安装到任意支持 Agent Skills 规范的 Agent 中。
 
-Agent 使用本 skill 的详细指令见 [SKILL.md](SKILL.md)。本文档面向人类开发者与维护者。
+skill 的详细说明见 [SKILL.md](SKILL.md)。
 
 ## 项目结构
 
@@ -48,8 +48,6 @@ meta-skill/
         ├── good-skill/   # 合规样本
         └── bad-skill/    # 恶意样本（仅用于校验器测试）
 ```
-
-> 注意：当前仓库不含 `tests/` 目录。开发期单元测试方案 TODO。
 
 ## 接入 Agent skills 目录
 
