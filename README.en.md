@@ -1,14 +1,12 @@
 # meta-skill
 
-Project documentation for human developers.
-
 > [中文](README.md)
 
 ## Overview
 
 `meta-skill` is an Agent Skill that helps users obtain a **safe, publishable** Agent Skill. It covers the full lifecycle — search, fetch, create, validate, package — and is itself delivered as a Skill, installable into any Agent that supports the Agent Skills specification.
 
-Detailed instructions for Agent usage are in [SKILL.md](SKILL.md). This document is for human developers and maintainers.
+Detailed instructions for Agent usage are in [SKILL.md](SKILL.md).
 
 ## Intended Audience
 
@@ -55,8 +53,6 @@ meta-skill/
         ├── good-skill/   # Compliant sample
         └── bad-skill/    # Malicious sample (for validator testing only)
 ```
-
-> Note: There is currently no `tests/` directory. Unit testing strategy — TODO.
 
 ## Installing into an Agent Skills Directory
 
