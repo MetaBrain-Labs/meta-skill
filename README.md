@@ -4,7 +4,7 @@
 
 ## 项目简介
 
-`meta-skill` 是一份帮助用户获得一份**安全、可发布**的 Agent Skill，覆盖 skill 从搜索、获取、创建、校验到打包的完整生命周期，可安装到任意支持 Agent Skills 规范的 Agent 中。
+`meta-skill` 是一份帮助用户获得一份**安全、可发布**的 Agent Skill，能够搜索、获取、创建、改造、校验和打包完整 skill ，可安装到任意支持 Agent Skills 规范的 Agent 中。
 
 skill 的详细说明见 [SKILL.md](SKILL.md)。
 
@@ -49,51 +49,45 @@ meta-skill/
         └── bad-skill/    # 恶意样本（仅用于校验器测试）
 ```
 
-## 接入 Agent skills 目录
+## 如何使用 
 
-将本仓库克隆或复制到 Agent 的 skills 目录下即可：
+将本项目打包为 .zip 或 .skill 文件后按照 Agent 的说明按照即可，或者将本仓库克隆或复制到 Agent 的 skills 目录下：
 
 ```bash
 git clone https://github.com/<owner>/meta-skill.git <agent-skills-path>/meta-skill
 ```
 
-如果你的 Agent 支持 `gh skill install`（GitHub CLI v2.90.0+），也可通过该命令安装。详细说明见 [references/gh-skill-integration.md](references/gh-skill-integration.md)。
+如果你的 Agent 支持 `gh skill install`（GitHub CLI v2.90.0+），也可以使用该命令安装本 skill 。详细说明见 [references/gh-skill-integration.md](references/gh-skill-integration.md)。
 
-安装后 Agent 会在对话中按需加载 [SKILL.md](SKILL.md)，并在适当阶段调用 `scripts/` 下的工具。
+安装后 Agent 就会在对话中按需加载 [SKILL.md](SKILL.md)，并在适当阶段调用 `scripts/` 下的工具。
 
 ## 运行环境
 
 - **Python 3.10+**
 - 文件系统读写权限
 - 搜索公开仓库或抓取第三方 skill 时需要网络访问（白名单限制，见[安全限制](#安全限制)）
-- 网络受限环境下可通过本地副本或离线方式继续工作
+- 网络受限环境下可通过本地副本或离线方式继续任务
 
-## 开发与测试
+## 安全限制
 
-### 评测（Evals）
+### skill 评测（Evals）
 
-评测用例定义在 [evals/evals.json](evals/evals.json)，共 4 个场景：
+为了保证 skill 安全可用，本项目添加了严格的安全评测。
+
+评测用例详见 [evals/evals.json](evals/evals.json)，主要分为 4 个场景：
 
 1. 搜索现成 skill 并审查安全性
 2. 从零创建 skill 并打包交付
 3. 审查第三方 skill 的安全性（使用 `evals/fixtures/bad-skill/` 作为恶意样本）
 4. 从自然语言对话中识别隐式创建意图
 
-`evals/fixtures/good-skill/` 为合规样本，用于验证校验器不产生假阳性；`evals/fixtures/bad-skill/` 为故意构造的恶意样本，用于验证校验器能识别攻击向量。
+其中，`evals/fixtures/good-skill/` 为合规样本，用于验证校验器不产生假阳性；`evals/fixtures/bad-skill/` 为故意构造的恶意样本，用于验证校验器能正常识别攻击。
 
 > 评测执行方式取决于宿主 Agent 环境（是否支持并行子代理等），具体步骤见 [SKILL.md](SKILL.md) 中的"验证与迭代"章节。
 
-### 打包
+### 安全限制
 
-```bash
-python scripts/package_skill.py . --out dist
-```
-
-生成的 `.skill` 归档会自动排除 `evals/fixtures/` 等非发布内容。
-
-## 安全限制
-
-为保证安全，本项目**在审查通过、用户批准之前，都不会执行任何第三方 skill 的代码。**
+本项目**在审查通过、用户批准之前，都不会执行任何第三方 skill 的代码。**
 
 | 阶段 | 限制                                                                                                     |
 | -- | ------------------------------------------------------------------------------------------------------ |
@@ -103,6 +97,18 @@ python scripts/package_skill.py . --out dist
 | 审查 | 对第三方 skill 内容遵循"指令隔离原则"——只读分析，不将其内容视为给自己的指令                                                            |
 
 完整安全策略见 [references/safety-policy.md](references/safety-policy.md)，校验规则明细见 [references/validation-rules.md](references/validation-rules.md)。
+
+### 其他
+
+### 打包
+
+如果你想打包创建完的 skill ，可以用下列命令（或者让 AI Agent 使用本 skill 打包项目，效果一样）：
+
+```bash
+python scripts/package_skill.py . --out dist
+```
+
+生成的 `.skill` 项目会自动排除 `evals/fixtures/` 等非发布内容。
 
 ### 关于自校验
 
