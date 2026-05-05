@@ -1,7 +1,5 @@
 # meta-skill
 
-面向人类开发者的项目说明。
-
 ## 项目简介
 
 `meta-skill` 是一个 Agent Skill，帮助用户获得一份**安全、可发布**的 Agent Skill，覆盖 skill 从搜索、获取、创建、校验到打包的完整生命周期，可安装到任意支持 Agent Skills 规范的 Agent 中。
