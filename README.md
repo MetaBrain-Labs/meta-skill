@@ -51,7 +51,7 @@ meta-skill/
 
 ## 如何使用 
 
-将本项目打包为 .zip 或 .skill 文件后按照 Agent 的说明按照即可，或者将本仓库克隆或复制到 Agent 的 skills 目录下：
+下载或克隆本项目，打包为 .zip 或 .skill 文件后按照 Agent 的说明安装即可，或者将本仓库克隆或复制到 Agent 的 skills 目录下：
 
 ```bash
 git clone https://github.com/<owner>/meta-skill.git <agent-skills-path>/meta-skill
@@ -59,7 +59,7 @@ git clone https://github.com/<owner>/meta-skill.git <agent-skills-path>/meta-ski
 
 如果你的 Agent 支持 `gh skill install`（GitHub CLI v2.90.0+），也可以使用该命令安装本 skill 。详细说明见 [references/gh-skill-integration.md](references/gh-skill-integration.md)。
 
-安装后 Agent 就会在对话中按需加载 [SKILL.md](SKILL.md)，并在适当阶段调用 `scripts/` 下的工具。
+安装后 Agent 就会在用户对话中按需加载 [SKILL.md](SKILL.md)，并在适当场景下调用 `scripts/` 下的工具搜索、创建、改造 skill 等等。
 
 ## 运行环境
 
