@@ -121,4 +121,4 @@ python scripts/package_skill.py . --out dist
 
 对本 skill 自身运行 `validate_skill.py` 会产生一些预期内的告警（例如脚本中按设计发出的 HTTP 请求会被 `network_call` 规则标记），这些是正常现象。
 
-校验器会主动跳过 `evals/fixtures/` 目录以避免 bad-skill 的恶意指令被误算到 meta-skill 头上。
+校验器会主动跳过 `evals/fixtures/` 目录以避免 bad-skill 的恶意指令被误识别到 meta-skill 头上。
