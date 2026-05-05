@@ -13,7 +13,7 @@ skill 的详细说明见 [SKILL.md](SKILL.md)。
 ```text
 meta-skill/
 ├── SKILL.md              # Agent 读取的主入口，包含完整的工作流程指令
-├── README.md             # 本文件，面向人类开发者
+├── README.md             # 本文件
 ├── README.en.md          # README 英文版
 ├── LICENSE               # MIT 协议
 ├── config/
