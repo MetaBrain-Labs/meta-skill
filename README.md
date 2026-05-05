@@ -68,7 +68,7 @@ git clone https://github.com/<owner>/meta-skill.git <agent-skills-path>/meta-ski
 - 搜索公开仓库或抓取第三方 skill 时需要网络访问（白名单限制，见[安全限制](#安全限制)）
 - 网络受限环境下可通过本地副本或离线方式继续任务
 
-## 安全限制
+## 安全说明
 
 ### skill 评测（Evals）
 
