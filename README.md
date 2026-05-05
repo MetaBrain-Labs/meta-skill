@@ -2,11 +2,13 @@
 
 > [English](README.en.md)
 
+
 ## 项目简介
 
 `meta-skill` 是一份帮助用户获得一份**安全、可发布**的 Agent Skill，能够搜索、获取、创建、改造、校验和打包完整 skill ，可安装到任意支持 Agent Skills 规范的 Agent 中。
 
 skill 的详细说明见 [SKILL.md](SKILL.md)。
+
 
 ## 项目结构
 
@@ -49,6 +51,7 @@ meta-skill/
         └── bad-skill/    # 恶意样本（仅用于校验器测试）
 ```
 
+
 ## 如何使用 
 
 下载或克隆本项目，打包为 .zip 或 .skill 文件后按照 Agent 的说明安装即可，或者将本仓库克隆或复制到 Agent 的 skills 目录下：
@@ -61,12 +64,14 @@ git clone https://github.com/<owner>/meta-skill.git <agent-skills-path>/meta-ski
 
 安装后 Agent 就会在用户对话中按需加载 [SKILL.md](SKILL.md)，并在适当场景下调用 `scripts/` 下的工具搜索、创建、改造 skill 等等。
 
+
 ## 运行环境
 
 - **Python 3.10+**
 - 文件系统读写权限
 - 搜索公开仓库或抓取第三方 skill 时需要网络访问（白名单限制，见[安全限制](#安全限制)）
 - 网络受限环境下可通过本地副本或离线方式继续任务
+
 
 ## 安全说明
 
@@ -81,7 +86,8 @@ git clone https://github.com/<owner>/meta-skill.git <agent-skills-path>/meta-ski
 3. 审查第三方 skill 的安全性（使用 `evals/fixtures/bad-skill/` 作为恶意样本）
 4. 从自然语言对话中识别隐式创建意图
 
-其中，`evals/fixtures/good-skill/` 为合规样本，用于验证校验器不产生假阳性；`evals/fixtures/bad-skill/` 为故意构造的恶意样本，用于验证校验器能正常识别攻击。
+其中，`evals/fixtures/good-skill/` 为合规样本，用于验证校验器不产生假阳性；
+`evals/fixtures/bad-skill/` 为故意构造的恶意样本，用于验证校验器能正常识别攻击。
 
 > 评测执行方式取决于宿主 Agent 环境（是否支持并行子代理等），具体步骤见 [SKILL.md](SKILL.md) 中的"验证与迭代"章节。
 
@@ -98,7 +104,8 @@ git clone https://github.com/<owner>/meta-skill.git <agent-skills-path>/meta-ski
 
 完整安全策略见 [references/safety-policy.md](references/safety-policy.md)，校验规则明细见 [references/validation-rules.md](references/validation-rules.md)。
 
-### 其他
+
+## 其他
 
 ### 打包
 
@@ -112,4 +119,6 @@ python scripts/package_skill.py . --out dist
 
 ### 关于自校验
 
-对本 skill 自身运行 `validate_skill.py` 会产生一些预期内的告警（例如脚本中按设计发出的 HTTP 请求会被 `network_call` 规则标记），这些不是错误。校验器会主动跳过 `evals/fixtures/` 目录以避免 bad-skill 的恶意指令被误算到 meta-skill 头上。
+对本 skill 自身运行 `validate_skill.py` 会产生一些预期内的告警（例如脚本中按设计发出的 HTTP 请求会被 `network_call` 规则标记），这些是正常现象。
+
+校验器会主动跳过 `evals/fixtures/` 目录以避免 bad-skill 的恶意指令被误算到 meta-skill 头上。
