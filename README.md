@@ -4,7 +4,7 @@
 
 ## 项目简介
 
-`meta-skill` 是一份 Agent Skill，帮助用户获得一份**安全、可发布**的 Agent Skill，覆盖 skill 从搜索、获取、创建、校验到打包的完整生命周期，可安装到任意支持 Agent Skills 规范的 Agent 中。
+`meta-skill` 是一份帮助用户获得一份**安全、可发布**的 Agent Skill，覆盖 skill 从搜索、获取、创建、校验到打包的完整生命周期，可安装到任意支持 Agent Skills 规范的 Agent 中。
 
 skill 的详细说明见 [SKILL.md](SKILL.md)。
 
